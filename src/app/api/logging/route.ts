@@ -4,6 +4,16 @@ import { logger } from "@/lib/logger";
 
 export async function POST(request: NextRequest) {
   const data = await request.json();
-  logger.info(data, "Logging on POST");
+  switch (data?.level) {
+    case "info":
+      logger.info(data);
+      break;
+    case "error":
+      logger.error(data);
+      break;
+    default:
+      logger.warn(data, "dose not match any level");
+      break;
+  }
   return NextResponse.json({ message: "ok" });
 }

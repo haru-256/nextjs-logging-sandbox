@@ -14,6 +14,7 @@ export function Logging({
 
   React.useEffect(() => {
     const body = JSON.stringify({
+      level: "info",
       requestPath: pathname,
       requestParams: searchParams.toString(),
     });
